@@ -1,0 +1,46 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+jar {
+	baseName = 'beisbol'
+	version = '0.0.1-SNAPSHOT'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
+	compile('org.springframework.boot:spring-boot-starter-web')
+//	compile('io.rest-assured:json-path:3.0.2')
+	compileOnly('org.projectlombok:lombok')
+//	testCompile('io.rest-assured:rest-assured:3.0.2')
+//	testCompile('io.rest-assured:json-schema-validator:3.0.2')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.apache.httpcomponents:httpclient:4.3.3')
+	testCompile('org.projectlombok:lombok')
+}
+
+test {
+	testLogging {
+		// Show that tests are run in the command-line output
+		events 'started', 'passed'
+	}
+}
