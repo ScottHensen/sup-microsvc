@@ -7,12 +7,16 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath "org.ajoberstar:gradle-git:1.6.0"
+//		classpath "org.ajoberstar:gradle-git-publish:0.1.1-rc.1"
 	}
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'org.ajoberstar.grgit'
+//apply plugin: 'org.ajoberstar.git-publish'
 
 jar {
 	baseName = 'beisbol'
@@ -29,18 +33,69 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-web')
-//	compile('io.rest-assured:json-path:3.0.2')
-	compileOnly('org.projectlombok:lombok')
-//	testCompile('io.rest-assured:rest-assured:3.0.2')
-//	testCompile('io.rest-assured:json-schema-validator:3.0.2')
+	compile('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.apache.httpcomponents:httpclient:4.3.3')
-	testCompile('org.projectlombok:lombok')
 }
 
 test {
 	testLogging {
-		// Show that tests are run in the command-line output
+		// Show test events in the command-line output
 		events 'started', 'passed'
 	}
 }
+
+// Push one file to git
+//   $ gradlew -Pfile=<file> gitpush
+task gitpush << {
+    //def grgit = org.ajoberstar.grgit.Grgit.open(dir: '.')
+    //grgit.add(patterns: ['version.properties'])
+    grgit.add(patterns: ["$file"])
+    // other thoughts... grgit.add(patterns: ['file'])  or ['${file}']
+    grgit.commit(message: 'Commit test')
+    grgit.push()   //(force: true) // not sure I would recommend this
+}
+
+
+
+// just some git playbaby tasks...
+
+
+// some git tasks from gradle-git wiki
+/*
+version = "1.0.0-${grgit.head().abbreviatedId}"
+
+task tagRelease {
+  description = 'Tags the current head with the project\'s version.'
+  doLast {
+    grgit.tag.add {
+      name = version
+      message = "Release of ${version}"
+    }
+  }
+}
+
+task pushToOrigin {
+  description = 'Pushes current branch\'s committed changes to origin repo.'
+  doLast {
+    grgit.push()
+  }
+}
+*/
+
+
+
+
+
+// some tasks from stackexchange
+/*
+task createTag(type: GitTag) {
+   repoPath = rootDir
+   tagName = yourTag
+   message = "Application release ${project.version.toString()}"
+}
+
+task pushTag(type: GitPush, dependsOn: createTag) {
+   namesOrSpecs = [yourTag]
+}
+*/
