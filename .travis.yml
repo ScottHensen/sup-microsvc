@@ -7,8 +7,8 @@ addons:
   sonarqube:
     token:
       secure: $SONAR_TOKEN
-script:
-- sonar-scanner -X
+#script:
+#- sonar-scanner -X
 cache:
   directories:
   - "$HOME/.sonar/cache"
