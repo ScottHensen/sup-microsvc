@@ -6,6 +6,23 @@ jdk:
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 
+addons:
+  sonarqube:
+    token:
+      secure: "VJSkXGU+V5PgYYARBQTbzhoL7lR5j+5Rkl3A2AntCoDo9NDYjspD4q6m0SbcOfe/oKEgMKI6kQ+v692Q9P88Iy3HgulXus1xPY0IPW6x4Nr5c
+0FgPpxBX6M7Hvld3hm+9x+nMMofvR8qUst/InTyMSZB0+9NiLfnL+U//sK6H7Z0NULAe26jAAB6/ra+4mHHVxkiNVBRNNIHyyE16fAMaVakdWpB3jh+O+RLo
+eCf9ojGdk0gJf2B0GAvIyC2s2Sam3ecuDMtlp3VfbDI+3d+12OPvnUSEvZQCFFwf3NCH0UG7pPRLIBlkGSUMQWqw8h+LPpp0NdbbcxwCiDKHHiMHA29Paqrn
+VEjdrb5ifovwxKp2583DCy/ZQPAD76Qox4WS4QcBrxUG2KfT5CPcYydo/epwuk9J/taBA5/mTutIQ6On4yKn6ix6VkfFGWtG1n5+QSRLbpVv5qPuIBK+Xfp2
+yRhzP9XNIjke9UDmPULFTxrTCT3HWecQdknVxHMB3Di7ivRKhpvl1ycEcVxlt75F7jlyMqpoAoYCRHCDXcglPuOniLazZ2iMgz60Bl4JOVHpBxV7m802b4RO
+uf79+A1b17aGD6662Pe3TEzJph3M4ITaocdHmMYYheIYWUfY87e2wdirimXZuBSoa3YwDAiUrgBoqLZ1DdKfBFw3v7b/+4="
+
+script:
+  # other script steps might be done before running the actual SonarQube analysis
+  - sonar-scanner
+  
+  
+  
+  
 ##### Stuff recommended on Travis Java doc
 #  
 #sudo: false
