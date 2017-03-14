@@ -1,39 +1,17 @@
 language: java
-
 jdk:
-  - oraclejdk8
-  
+- oraclejdk8
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
-
+- bash <(curl -s https://codecov.io/bash)
 addons:
   sonarqube:
-    token:
-      secure: "VJSkXGU+V5PgYYARBQTbzhoL7lR5j+5Rkl3A2AntCoDo9NDYjspD4q6m0SbcOfe/oKEgMKI6kQ+v692Q9P88Iy3HgulXus1xPY0IPW6x4Nr5c0FgPpxBX6M7Hvld3hm+9x+nMMofvR8qUst/InTyMSZB0+9NiLfnL+U//sK6H7Z0NULAe26jAAB6/ra+4mHHVxkiNVBRNNIHyyE16fAMaVakdWpB3jh+O+RLoeCf9ojGdk0gJf2B0GAvIyC2s2Sam3ecuDMtlp3VfbDI+3d+12OPvnUSEvZQCFFwf3NCH0UG7pPRLIBlkGSUMQWqw8h+LPpp0NdbbcxwCiDKHHiMHA29PaqrnVEjdrb5ifovwxKp2583DCy/ZQPAD76Qox4WS4QcBrxUG2KfT5CPcYydo/epwuk9J/taBA5/mTutIQ6On4yKn6ix6VkfFGWtG1n5+QSRLbpVv5qPuIBK+Xfp2yRhzP9XNIjke9UDmPULFTxrTCT3HWecQdknVxHMB3Di7ivRKhpvl1ycEcVxlt75F7jlyMqpoAoYCRHCDXcglPuOniLazZ2iMgz60Bl4JOVHpBxV7m802b4ROuf79+A1b17aGD6662Pe3TEzJph3M4ITaocdHmMYYheIYWUfY87e2wdirimXZuBSoa3YwDAiUrgBoqLZ1DdKfBFw3v7b/+4="
-
+    token: 
+      secure: FP7bpr2ZYD2fK1gch8A3NunqKISDX70yE1G7Qr8rJERihQNAj7xYlEEdwx2ZV69FLJzTJnDSaYCl1KDr+jzGZ1GOubxu2UL6f5oAwbVUPGzzax1LZp/3jawhvYga9GU2BvJhbM4NFJF3IlHEtJYFegZjr31E4v9h6DAL3CTr6ulB0DaRdiSSEy17CmNoQMKayuORWU5A04UfLVEYXLiCWqSSc23pewSC3ysbn8faSBIugL09kRvDOT0NEnRjh0Z5BlGTdB0ieQ08akt7sB14nXlRkTUdtOPggPzbQFOP7InA2aUt8equKJedwe/b0hrn7y4jEcGQPUsZlCg46ljXFFC9qHOefBiJhZglzpWN9h5je+2jd//PTScAZ8T4Q4BsjpEJrB7QQwzpngVkNAH8/yh3g3sBhl7Q+sWAGioU57XCz1yZq+pTwZcItffwXOftTEZeQdFeD/iFpMfpfa9b1OwBPjD19SiHWbbP4yIVN7bHNosZ0t35hYd8UJliZBXWt25WgB/BI74CYgU7ACEEhodbYfSmHDPIUIHBFCsbR7xvpcBHoPgphUiZiNTjR6WxNnvU1s8CthdvpQVpPFslcUWxmRwNmh22VfJ9Vai5l8n2hESlojMA3e0vPCYrTBJQc1vNzuW8TVBvRDhlLrNmceajy7zvoSVuZKGteqZCLZ4=
 script:
-  # other script steps might be done before running the actual SonarQube analysis
-  - sonar-scanner -X
-
+- sonar-scanner -X
 cache:
   directories:
-    - '$HOME/.sonar/cache'
-  
-  
-  
-  
-##### Stuff recommended on Travis Java doc
-#  
-#sudo: false
-#addons:
-#  apt:
-#    packages:
-#      - oracle-java8-installer
-#
-#before_cache:
-#  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-#  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-#cache:
-#  directories:
-#    - $HOME/.gradle/caches/
-#    - $HOME/.gradle/wrapper/
+  - "$HOME/.sonar/cache"
+#env:
+#  global:
+#    secure: FP7bpr2ZYD2fK1gch8A3NunqKISDX70yE1G7Qr8rJERihQNAj7xYlEEdwx2ZV69FLJzTJnDSaYCl1KDr+jzGZ1GOubxu2UL6f5oAwbVUPGzzax1LZp/3jawhvYga9GU2BvJhbM4NFJF3IlHEtJYFegZjr31E4v9h6DAL3CTr6ulB0DaRdiSSEy17CmNoQMKayuORWU5A04UfLVEYXLiCWqSSc23pewSC3ysbn8faSBIugL09kRvDOT0NEnRjh0Z5BlGTdB0ieQ08akt7sB14nXlRkTUdtOPggPzbQFOP7InA2aUt8equKJedwe/b0hrn7y4jEcGQPUsZlCg46ljXFFC9qHOefBiJhZglzpWN9h5je+2jd//PTScAZ8T4Q4BsjpEJrB7QQwzpngVkNAH8/yh3g3sBhl7Q+sWAGioU57XCz1yZq+pTwZcItffwXOftTEZeQdFeD/iFpMfpfa9b1OwBPjD19SiHWbbP4yIVN7bHNosZ0t35hYd8UJliZBXWt25WgB/BI74CYgU7ACEEhodbYfSmHDPIUIHBFCsbR7xvpcBHoPgphUiZiNTjR6WxNnvU1s8CthdvpQVpPFslcUWxmRwNmh22VfJ9Vai5l8n2hESlojMA3e0vPCYrTBJQc1vNzuW8TVBvRDhlLrNmceajy7zvoSVuZKGteqZCLZ4=
