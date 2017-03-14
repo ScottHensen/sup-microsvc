@@ -13,7 +13,7 @@ addons:
 
 script:
   # other script steps might be done before running the actual SonarQube analysis
-  - sonar-scanner
+  - sonar-scanner -X
 
 cache:
   directories:
