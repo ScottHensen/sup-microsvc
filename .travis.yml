@@ -8,7 +8,8 @@ addons:
   sonarqube:
     token:
       secure: "IGP3gny/l6Uj1gVaGLVUOfLCXdKhPmgYZtsWmHwcI9Qp6lJWOzoVwX8uXrDyOldt41NtZbUxHAGZchjbRztENWADY8MctyjYlmKEbWdwvnc/Le3DH9nO+2rHgy+RxlFE8zu5GNNepus2TZYA6Zmy+cm2plcfy/q4FNpjps9iTNTXs/yGqBXFFpAAmB5THKApLqa9nD8aC5ELpwdBly6ExWpultdAdSUqBivMtayfBYRui4sSeb66MjVcBobBe9InluCIYViMw34nq8v+Qlry2uBjl5fIooZVKEVQa5pBJvxhn2vPpBARk3tKeCbeMG8EuhcuuXUVFGeU2cflQ7bOFGzUpJs/CXy2PkJSl6FRkzroWZYb/xFfg9Ru680iXJP/tmwGYXf/YV7/9cyp2JMqOz8UON0QsxtWgQi7Y3RQg+9byzoBbwnYVPP/9nNgoDo5ZtOwTGUyABG3/eq/D2KrdpJ+kicX7W+DjKa0gOOuAg5T3T97VfP2HagYmdAGjGSAkh3N0k0h7oR5gGjRAB26EhLCvvLvdrJ+V0vLciT60GFry0YwXjdGAVTW6KmeeTXCWXrpViedWGVwEj6UBXhFBGhTfk+c2MYcvZFTeVlzq7MxAuqNlWsTArx5DAjJKIFiyc3kLh6D+yBaXPOQX0QHXNsSlUxfonh/QmScoUvzmzE="
-
+    organization: "scotthensen-github"
+    
 script:
 - sonar-scanner -X
 
